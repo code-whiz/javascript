@@ -13,7 +13,7 @@ function onlyErrorOnRules(rulesToError, config) {
     const ruleName = rule[0];
     const ruleConfig = rule[1];
 
-    if (rulesToError.indexOf(ruleName) === -1) {
+    if (!rulesToError.includes(ruleName)) {
       if (Array.isArray(ruleConfig)) {
         errorsOnly.rules[ruleName] = ['warn'].concat(ruleConfig.slice(1));
       } else if (typeof ruleConfig === 'number') {
