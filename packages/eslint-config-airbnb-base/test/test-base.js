@@ -12,8 +12,7 @@ fs.readdirSync(path.join(__dirname, '../rules')).forEach((name) => {
 });
 
 Object.keys(files).forEach((
-  name, // trailing function comma is to test parsing
-) => {
+  name, ) => {
   const config = files[name];
 
   test(`${name}: does not reference react`, (t) => {
@@ -21,7 +20,7 @@ Object.keys(files).forEach((
 
     // scan plugins for react and fail if it is found
     const hasReactPlugin = Object.prototype.hasOwnProperty.call(config, 'plugins')
-      && config.plugins.indexOf('react') !== -1;
+      && config.plugins.includes('react');
     t.notOk(hasReactPlugin, 'there is no react plugin');
 
     // scan rules for react/ and fail if any exist
